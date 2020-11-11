@@ -1,0 +1,39 @@
+
+<div class="container restoprincipal">
+    <div class="row p-1">
+
+        <div *ngIf="bubicacion" class="ubicacionprohib text-center mt-4">
+            <h3>Todavia no se puede ingresar al Menu</h3>
+            <p>Te encontras a <span class="brume-span">{{distanciaLocal}} KM </span>del local</p>
+        </div>
+
+        <div *ngIf="bmainmenu" class="mainmenu">
+            <ul>
+                <li *ngFor="let r of restaurantMenu">{{r.nombre}}</li>
+            </ul>
+
+            <button class="btn-bfull btn-brume4" (click)="crearqr()">
+                CREAR QR
+            </button>
+            
+        </div>
+
+
+
+
+        
+        <qrgenerator *ngIf="bqrcode" [value]="pedido"></qrgenerator>
+
+        <div class="mobiletab pt-3">
+            <ul class="row iconMenu p-0">
+                <li class="col-4"><i class="icon brumeIcon fas fa-utensils" (click)="menuOpt()"></i></li>
+                <li class="col-4"><i class="icon brumeIcon fas fa-qrcode" (click)="qrOpt()"></i></li>
+                <li class="col-4"><i class="icon brumeIcon fas fa-store" (click)="adminOpt()"></i></li>
+            </ul>
+        </div>
+
+    </div>
+
+    
+</div>
+

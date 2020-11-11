@@ -1,1 +1,616 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+//COLORES
+$color-prim:#737373;
+$color-prim-light:#9FA2AB;
+$color-prim-light2:#E7E9F1;
+$color-sec:#6288CB;
+$color-moderngrey:#404456;
+$color-moderngreyLight:#4F6373;
+$color-softgrey:#A7A7A7;
+$color-pastelgreen:#49c1b0;
+$color-pastelgreenLight:#BEE1FD;
+
+$color-purple:#372F60;
+$color-green:#C4D6DB;
+$color-turquesa:#4990FB;
+
+$color-cool2:#F7E5C2;
+// $color-cool: #7682D2;
+$color-cool: rgb(88,96,229);
+$color-cool-dark: #3700B3;
+$color-cool-light: #e7d3fe;
+// $color-body:#F7F7F7;
+$color-body:white;
+$color-text1:#3A3A3A;
+$color-textselect:#B5B5B5;
+$titulos-color:#383F43;
+
+$color-fail:#EA4335;
+
+$font-titulo: 'Prata', serif;
+$font-titulo2: 'Quicksand', sans-serif;
+$font-main: 'Quicksand', sans-serif;
+
+//WIDTH
+$mobile : 370px;
+$tablet : 770px;
+$desktop : 3000px;
+
+//MOD COLOR
+$circle-size:33;
+
+//GENERAL RADIUS
+$radius:3px;
+
+//GENERAL
+html, body { height: 100%; }
+// background-color:$color-body !important
+body,html {margin: 0; font-family: $font-main !important; }
+input{font-size: 0.95em !important;}
+i{cursor:pointer};
+.icon{
+  color:$color-moderngreyLight;
+  padding:3px;
+}
+
+li,button{
+  &:focus{
+    outline: 0 !important;
+  }
+}
+
+.navigation{
+  // position:absolute;
+  top:0px;
+  left:0px;
+  z-index:999 !important
+}
+.brumeRadius{
+  border-radius: $radius;
+}
+
+
+
+
+.searchMod{
+  .form-group{
+    border-radius:8px !important;
+    input{
+      border:none !important;
+      border-radius:8px !important;
+      background-color:#F5F6FA !important;
+      color:black !important;
+      font-size:1.2;
+      &:focus {
+        outline: $color-cool !important;
+      }
+    }
+
+  }
+}
+
+
+//BACKGROUNDS
+.backgroundCool{
+  color:$color-prim-light2 !important;
+  transition: 0.6s;
+}
+
+.doodlebackground{
+    background-image:url("/assets/img/pattern/doodle.jpg") !important;
+}
+.backgroundBody{
+  background-color: $color-body;
+  width:100%;
+
+  // @extend .doodlebackground;
+  // background:url("/assets/img/pattern/doodle.jpg");
+  background-repeat: repeat;
+  // padding:30px !important;
+  height: auto;
+}
+
+
+
+//TEXT CLASSES
+.mainTextColor{
+  color:$color-text1;
+}
+
+.modernGrey{
+	color:$color-moderngrey;
+}
+.modernGreyLight{
+	color:$color-moderngreyLight;
+}
+
+.textSelected{
+  color:$color-textselect;
+  font-size:1.05em;
+}
+
+.portada{
+	padding:40px;
+  height:auto;
+ }
+
+.navMargin{
+  margin-top:60px;
+}
+
+.container-fluid{
+  padding-left:0px !important;
+  padding-right:0px !important;
+  margin:none !important;
+
+}
+.titulosPrim{
+  font-size:45px !important;
+  font-family: $font-titulo;
+  color:whitesmoke;
+  @media screen and (max-width:900px){
+    font-size:25px !important;
+  }
+}
+
+
+.brume-span{
+  color:$color-cool !important;
+}
+.nombreDisplay{
+  @extend .titulosProductos;
+  font-size:1.35em !important;
+}
+.accountBody{
+  background-color:$color-body !important;
+  background-attachment: fixed;
+  // height: 100vh;
+  width:100%;
+
+  .brume-table{
+    width:90%;
+    margin:0 auto;
+    font-size:0.85em;
+  }
+}
+
+
+.brumeSoftText{
+  color:$color-softgrey !important;
+}
+
+.brumeModernText{
+  color:$color-moderngrey;
+}
+
+.titulosProductos{
+  font-family: $font-titulo2;
+  color:$color-purple;
+  padding: 0px;
+  font-size:1.05em;
+  font-weight: 700;
+}
+
+.precio2{
+  font-family: $font-titulo2;
+  color:$color-pastelgreen;
+  font-size:1.1em;
+  font-weight: 700;
+}
+
+.precio1{
+  font-size: 1em;
+  // color:lighten($color-cool,15%);
+  color:$color-cool;
+  font-family: $font-titulo2 !important;
+}
+.bigPrecio{
+  font-size: 1.7em;
+  color:lighten($color-cool,15%);
+  font-family: $font-titulo2 !important;
+
+}
+
+
+
+
+table{
+  font-size: 0.90em !important;
+  td{
+    animation:0.5s aparece;
+    padding-bottom:12px !important;
+    .form-group{
+      padding-bottom:12px !important;
+      margin:0px;
+    }
+  }
+  th{
+    // padding:3px !important;
+    font-size: 0.95em !important;
+  }
+
+}
+
+//MODULO COLOR
+
+.colorMod{
+  .textSelec{
+    display:inline-block;
+  }
+  .colorList , .colorSelect{
+    list-style: none;
+    padding:3px;
+
+  }
+
+}
+
+.colorItem{
+  padding:3px;
+  margin-right:7px;
+  animation: aparece 0.6s;
+  border:2px solid whitesmoke;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  &.sm{
+    height: $circle-size *0.8 +px;
+    width: $circle-size*0.8 + px;
+  }
+  &.lg{
+    height: $circle-size +px;
+    width: $circle-size + px;
+  }
+}
+
+
+
+//LINK
+.brumeLink{
+  color:$color-turquesa;
+  font-size: 0.9em;
+  cursor:pointer;
+}
+
+
+//SEPARADO
+.divider-brume{
+  margin-top:50px;
+  .divider-text{
+    position: absolute;
+    top: -11px;
+    text-align: center;
+    width: 30%;
+    background-color:white !important;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size:0.8em;
+  }
+
+  hr{
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-top: 1px solid $color-cool-light;
+  }
+  .relative{
+    position: relative;
+  }
+}
+
+//SHADOWS
+
+.brumeShadow{
+		box-shadow:  1px 5px 8px 0px rgba(100, 100, 100, 0.5);
+}
+
+.brume-shadow-thin{
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,.16);
+}
+
+@mixin btn-brume ($bk , $color , $shadow:true) {
+  margin: 5px 2px;
+  background-color: $bk;
+  color:$color;
+  border-radius:8px;
+  padding:4px;
+  font-size: 0.7em;
+  font-weight: 200;
+
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  border-style: none;
+  @if $shadow {
+    @extend .brumeShadow;
+  }
+
+}
+
+@mixin btn-size($wd , $full:true){
+  height: 40px;
+  width: $wd + px;
+  @if $full {
+    width: 100%;
+  }
+}
+
+$color-cool2:#F7E5C2;
+// $color-cool: #7682D2;
+$color-cool: rgb(88,96,229);
+$color-cool-dark: #3700B3;
+$color-cool-light: #e7d3fe;
+
+
+//SELECT OPTIONS
+
+.brume-select-group{
+
+  span{
+    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    margin: 5px;
+    line-height: 36px;
+    color: #fff;
+    border-radius: 100%;
+    background: $color-cool;
+  }
+
+
+  button{
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-radius: 50px;
+    cursor: pointer;
+    line-height: 45px;
+    padding: 0;
+
+  }
+
+}
+
+
+//BUTTON SIZES
+.btn-bfull{
+  @include btn-size( 0 , $full:true);
+}
+.btn-bmd{
+  @include btn-size( 100 , $full:false);
+}
+.btn-blg{
+  @include btn-size( 150 , $full:false);
+}
+.btn-mini{
+  @include btn-size( 50 , $full:false);
+}
+
+
+//BUTTON STYLES
+.btn-brume1{
+  @include btn-brume($color-cool , whitesmoke,  $shadow:true);
+}
+
+.btn-brume2{
+  @include btn-brume(whitesmoke , $color-turquesa,  $shadow:true );
+}
+
+.btn-brume3{
+  @include btn-brume($color-pastelgreen , whitesmoke,  $shadow:true);
+}
+
+.btn-brume4{
+  background-image: linear-gradient(180deg,$color-cool,$color-cool-dark);
+  color: #fff;
+  padding: 10px 20px;
+  border: 0;
+  text-transform: uppercase;
+  transition: all .3s;
+  border-radius: 50px;
+  font-size:0.9em;
+
+}
+
+.btn-brume5{
+  background-image: linear-gradient(180deg,#ffce00,#f0802e);
+  color: #fff;
+  padding: 10px 20px;
+  border: 0;
+  text-transform: uppercase;
+  transition: all .3s;
+  border-radius: 50px;
+  font-size:0.9em;
+
+}
+
+
+
+
+
+
+
+
+
+.btn-google{
+  @include btn-brume(#EB5144 , whitesmoke,  $shadow:true);
+}
+
+
+
+
+
+
+
+//MATERIALIZED
+
+mat-icon{
+  cursor: pointer;
+}
+mat-form-field {
+  width: 100% !important;
+}
+
+
+.brumeIcon{
+  font-size:25px;
+  color:whitesmoke;
+  // color:$color-cool;
+}
+
+
+.iconAnimation{
+  animation:0.5s iconAppear;
+}
+
+
+.brumePayment{
+  color:$color-pastelgreenLight;
+  @extend .brumeIcon;
+}
+
+.brumePaymentFail{
+  color:$color-fail;
+  @extend .brumeIcon;
+}
+
+// 45EFA4
+.brumePedido{
+  color:$color-pastelgreen;
+  @extend .brumeIcon;
+}
+.brumePedidoWait{
+  color:#ffce00;
+  @extend .brumeIcon;
+}
+
+
+ //BOOTSTRAP
+
+
+ .row , p , ul{
+   margin:0px !important;
+ }
+
+ .nav-item{
+   cursor:pointer !important;
+   font-size:0.9em !important;
+   &:hover{color:crimson !important}
+ }
+
+
+.list-group{
+  background-color: $color-body !important;
+  .list-group-item{
+    cursor:pointer;
+    color:$color-cool;
+
+    &.active{
+      background-color: #42C2F3 !important;
+      border:none;
+      color:$color-moderngreyLight
+    }
+  }
+
+}
+
+
+//SCROLLBAR
+
+.brumeScrollbar {
+  /*styles for Firefox*/
+  scrollbar-color: $color-body;
+  scrollbar-width: thin;
+}
+
+.brumeScrollbar {
+  overflow-y: scroll;
+  // overflow-x: hidden;
+}
+
+  /*-----styles for Chrome and Safari-----*/
+/* scrollbar width */
+.brumeScrollbar::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+/* scrollbar track */
+.brumeScrollbar::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* scrollbar handle */
+.brumeScrollbar::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  scrollbar-color: $color-body;
+}
+
+
+
+
+.centerPos{
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  position: absolute;
+}
+
+
+//MASONRY LAYOUT
+
+.masonry-container {
+
+
+  @media (min-width:0px) and (max-width:$tablet){
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+
+    -webkit-column-gap: 15px;
+    -moz-column-gap: 15px;
+    column-gap: 15px;
+  }
+
+  @media (min-width:$tablet) and (max-width:$desktop){
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 5;
+
+    -webkit-column-gap: 15px;
+    -moz-column-gap: 15px;
+    column-gap: 15px;
+  }
+
+
+
+}
+
+.masonry-item {
+  border-radius: $radius !important;
+  display: inline-block;
+  width: 100%;
+  border:none !important;
+}
+
+.masonry-item img {
+  display:block;
+  width: 100%;
+}
+
+/* Just for decoration: */
+.masonry-item span {
+  font-family: sans-serif;
+  display:block;
+  padding:10px;
+}
+
+.masonry-item {
+  margin-bottom: 15px;
+  // border:1px solid #ccc;
+  border-radius: 5px;
+}

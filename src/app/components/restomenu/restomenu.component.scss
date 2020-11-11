@@ -1,0 +1,32 @@
+
+
+
+
+.restoprincipal{
+
+    .mobiletab{
+        width: 100%;
+        background-color: rgb(88,96,229);
+        height: 60px;
+        position: fixed;
+        bottom:0px;
+        left:0px;
+        z-index:999;
+
+        .ubicacionprohib{
+            height: 100vh;
+        }
+
+        .mainmenu{
+            width: 100% !important;
+        }
+        .iconMenu{
+            text-align: center;
+            li{
+                list-style: none;
+                cursor:pointer;
+            }
+
+        }
+    }
+}
