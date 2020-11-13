@@ -9,7 +9,7 @@ import {GeolocalizacionService} from '../../services/geolocalizacion.service'
   templateUrl: './restomenu.component.html',
   styleUrls: ['./restomenu.component.scss']
 })
-export class RestomenuComponent implements OnInit {  
+export class RestomenuComponent implements OnInit {
 
   constructor(private router:Router , private aRoute: ActivatedRoute , private geo:GeolocalizacionService, private restaurant:RestaurantsService) { }
   public pathresto:string;
@@ -27,7 +27,9 @@ export class RestomenuComponent implements OnInit {
   public lonMapLocal:number = -58.5222557;
 
   public distanciaLocal:string = "" ;
-  public distanciaUmbral:number = 5;
+  public distanciaUmbral:number = 0;
+
+  public bdistanciaUmbral:boolean = false; // el local permite ver el local a distancia?
 
   public bubicacion:boolean = false;
 
@@ -41,31 +43,44 @@ export class RestomenuComponent implements OnInit {
 
 
 
-  
+
   ngOnInit(): void {
    this.aRoute.params.subscribe(params => {
     this.pathresto = params.resto; // parametro rubro route
     this.updateMasterData(this.pathresto);
-    
+
 
     this.geo.geolocalizacionActivate((position)=>{
       this.latMapUser = position.coords.latitude;
       this.lonMapUser = position.coords.longitude;
       this.distanciaLocal = this.distanceFrom(this.latMapUser , this.lonMapUser , this.latMapLocal, this.lonMapLocal)
-      console.log(parseInt(this.distanciaLocal))
-      if(parseInt(this.distanciaLocal)>this.distanciaUmbral){
-        console.log("distanciaaaa")
-        this.bubicacion = true;
-        this.bmainmenu = false;
-      }else{
-        this.bmainmenu = true;
-        console.log("no distanciaaaa")
-      }
+      this.checkUmbralDistancia(this.distanciaLocal , this.distanciaUmbral , this.bdistanciaUmbral)
 
     });
 
 
 });
+
+  }
+
+  checkUmbralDistancia(distancia , distranciaUmbral , menudistanciahab){
+
+    if (menudistanciahab == true){
+      this.bmainmenu = true;
+      console.log("El local permite ver el menu a distancia");
+    }else{
+      if(parseInt(distancia)>distranciaUmbral){
+        console.log("No puede acceder a la aplicacion debido a la distancia");
+        this.bubicacion = true;
+        this.bmainmenu = false;
+      }else{
+        this.bmainmenu = true;
+        console.log("Ingresando a menu, distancia aceptada");
+      }
+
+    }
+
+
 
   }
 
@@ -88,14 +103,22 @@ export class RestomenuComponent implements OnInit {
     let newobj = xs.reduce(function(rv, x) {
       (rv[x[key]] = rv[x[key]] || []).push(x);
       return rv;
-    }, {});
+    }, []);
 
-    let keys = Object.keys(newobj);
-    console.log(keys)
-    for(let i=0 ; i<keys.length-1 ; i++){
-      arr.push(newobj[keys[i]])
-    }
-    return arr;
+    this.categorias= Object.keys(newobj);
+    return newobj;
+  }
+
+  restaurantMenuFilter(prop){
+    let newResto = this.restaurantMenu.filter((item)=>{
+      return item.Categoria1 == prop
+    })
+
+    return newResto;
+  }
+
+  abrirItem(item){
+    console.log(item);
   }
 
   crearqr(){
@@ -134,16 +157,16 @@ export class RestomenuComponent implements OnInit {
   }
 
   qrOpt(){
-    
+
   }
 
 
   adminOpt(){
-    
+
   }
 
   logoSource(){
-    
+
   }
 
 
