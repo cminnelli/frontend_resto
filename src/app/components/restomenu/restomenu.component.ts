@@ -9,9 +9,7 @@ import {GeolocalizacionService} from '../../services/geolocalizacion.service'
   templateUrl: './restomenu.component.html',
   styleUrls: ['./restomenu.component.scss']
 })
-export class RestomenuComponent implements OnInit {
-
-  
+export class RestomenuComponent implements OnInit {  
 
   constructor(private router:Router , private aRoute: ActivatedRoute , private geo:GeolocalizacionService, private restaurant:RestaurantsService) { }
   public pathresto:string;
@@ -29,18 +27,26 @@ export class RestomenuComponent implements OnInit {
   public lonMapLocal:number = -58.5222557;
 
   public distanciaLocal:string = "" ;
-  public distanciaUmbral:number = 1;
+  public distanciaUmbral:number = 5;
 
   public bubicacion:boolean = false;
-  
 
+  public logosrc:string = "../../../assets/images/"
 
+  //CATEGORIAS
 
+  public categorias:Array<string> = [];
   public restaurantMenu:Array<any> = [];
+  public restaurantMenuClasify:Array<any> = [];
+
+
+
+  
   ngOnInit(): void {
    this.aRoute.params.subscribe(params => {
     this.pathresto = params.resto; // parametro rubro route
     this.updateMasterData(this.pathresto);
+    
 
     this.geo.geolocalizacionActivate((position)=>{
       this.latMapUser = position.coords.latitude;
@@ -66,10 +72,31 @@ export class RestomenuComponent implements OnInit {
   async updateMasterData(resto){
     this.restaurantMenu = await this.restaurant.getRestaurant(resto);
     this.pedido = JSON.stringify(this.restaurantMenu[0]);
-    console.log(this.pedido)
-    console.log("master ada")
+    this.logosrc = this.logosrc + resto + ".jpg";
+    console.log(this.restaurantMenu)
+    console.log("master data")
+
+    console.log("generando categorias");
+    this.restaurantMenuClasify = this.categoriasCreator(this.restaurantMenu , "Categoria1")
+    console.log(this.restaurantMenuClasify)
   }
 
+
+  categoriasCreator(xs, key){
+    let arr = [];
+
+    let newobj = xs.reduce(function(rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv;
+    }, {});
+
+    let keys = Object.keys(newobj);
+    console.log(keys)
+    for(let i=0 ; i<keys.length-1 ; i++){
+      arr.push(newobj[keys[i]])
+    }
+    return arr;
+  }
 
   crearqr(){
     this.nped +=1;
@@ -99,6 +126,8 @@ export class RestomenuComponent implements OnInit {
 }
 
 
+
+
   menuOpt(){
     this.bmainmenu = true;
     this.bqrcode = false;
@@ -110,6 +139,10 @@ export class RestomenuComponent implements OnInit {
 
 
   adminOpt(){
+    
+  }
+
+  logoSource(){
     
   }
 

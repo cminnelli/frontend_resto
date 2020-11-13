@@ -2,27 +2,54 @@
 <div class="container restoprincipal">
     <div class="row p-1">
 
+        <div class="circulo"></div>
+        <div class="logoWrapp text-center">
+            <img class="logo rounded-circle" [src]="logosrc" alt="">
+        </div>
         <div *ngIf="bubicacion" class="ubicacionprohib text-center mt-4">
             <h3>Todavia no se puede ingresar al Menu</h3>
             <p>Te encontras a <span class="brume-span">{{distanciaLocal}} KM </span>del local</p>
         </div>
 
-        <div *ngIf="bmainmenu" class="mainmenu">
-            <ul>
-                <li *ngFor="let r of restaurantMenu">{{r.nombre}}</li>
-            </ul>
+        <div class="mainmenu" *ngIf="bmainmenu" >
+
+
+                
+                <mat-tab-group class="categoriasWrapp">
+                    <mat-tab label="Comida">
+                        <ul class="p-0">
+                            <li *ngFor="let r of restaurantMenu">{{r.nombre}} <span>......</span><span class="text-right font-weight-bold precio1">${{r.Precio}}</span></li>
+                        </ul>
+    
+                      </mat-tab>
+                  <mat-tab label="Bebidas">
+
+                  </mat-tab>
+
+                  <mat-tab label="Postre">
+
+                  </mat-tab>
+                </mat-tab-group>
+                
+
+ 
 
             <button class="btn-bfull btn-brume4" (click)="crearqr()">
-                CREAR QR
+                CREAR PEDIDO QR
             </button>
             
         </div>
 
 
 
+        <div class="qrtab">
+            <div class="row">
+                <qrgenerator *ngIf="bqrcode" [value]="pedido"></qrgenerator>
+            </div>
 
+        </div>
         
-        <qrgenerator *ngIf="bqrcode" [value]="pedido"></qrgenerator>
+
 
         <div class="mobiletab pt-3">
             <ul class="row iconMenu p-0">

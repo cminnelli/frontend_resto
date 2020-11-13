@@ -9,6 +9,9 @@ import { QrgeneratorComponent } from './components/qrgenerator/qrgenerator.compo
 import { FormsModule } from '@angular/forms';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +21,13 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
   ],
   imports: [
+    MatTabsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
