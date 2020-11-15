@@ -307,7 +307,7 @@ table{
 }
 
 .brume-shadow-thin{
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,.16);
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,.10);
 }
 
 @mixin btn-brume ($bk , $color , $shadow:true) {
@@ -419,6 +419,18 @@ $color-cool-light: #e7d3fe;
 
 .btn-brume5{
   background-image: linear-gradient(180deg,#ffce00,#f0802e);
+  color: #fff;
+  padding: 10px 20px;
+  border: 0;
+  text-transform: uppercase;
+  transition: all .3s;
+  border-radius: 50px;
+  font-size:0.9em;
+
+}
+
+.btn-brume6{
+  background-image: linear-gradient(180deg,#FD5C63,#E32636);
   color: #fff;
   padding: 10px 20px;
   border: 0;
@@ -558,6 +570,9 @@ mat-form-field {
   left:50%;
   transform:translate(-50%,-50%);
   position: absolute;
+  z-index:999999 !important;
+  width:90%;
+  margin:0 auto;
 }
 
 

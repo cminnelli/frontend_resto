@@ -1,12 +1,17 @@
 
+<popup-select class="centerPos" [item]="itemMenu" *ngIf="bpopupselect" (descartar)="descartarPopUp($event)"></popup-select>
+
 <div class="container restoprincipal">
   <nav>
     <i class="fas fa-search brume-span"></i>
   </nav>
     <div class="row p-1">
 
-        <div class="circulo"></div>
-        <div class="logoWrapp text-center">
+        <div [ngClass]="{'circulo' : circle , 'pedido' : ped}" >
+          <button>HOola</button>
+        </div>
+
+        <div class="logoWrapp text-center" [ngClass]="{'logoAnim' : logoAnim }">
             <img class="logo rounded-circle" [src]="logosrc" alt="">
         </div>
         <div *ngIf="bubicacion" class="ubicacionprohib text-center">
@@ -16,13 +21,14 @@
 
         <div class="mainmenu P-0" *ngIf="bmainmenu" >
 
+
                 <mat-tab-group class="categoriasWrapp">
+
                     <mat-tab class="mt-3" *ngFor="let cat of categorias" label="{{cat}}">
                         <ul class="p-0">
-                            <li *ngFor="let r of restaurantMenuFilter(cat)" (click)="abrirItem(r)" class="brume-shadow-thin brumeRadius p-3">
-                              <h4 class="p-2 font-weight-bold">{{r.nombre}}</h4>
-                              <h4 class="precio1 font-weight-bold">${{r.Precio}}</h4>
-                            </li>
+                            <li *ngFor="let r of restaurantMenuFilter(cat)" (click)="abrirItem(r)" class="p-1">
+                              <h5 class="p-1">{{r.nombre}} <span class="precio1 font-weight-bold pull-right text-right ">${{r.Precio}}</span></h5>
+                             </li>
                         </ul>
 
                       </mat-tab>
@@ -31,8 +37,8 @@
 
 
 
-            <button class="btn-bfull btn-brume4" (click)="crearqr()">
-                CREAR PEDIDO QR
+            <button class="btn-bfull btn-brume4" (click)="revisarpedido()">
+              <i class=" fas fa-utensils"></i> REVISAR PEDIDO
             </button>
 
         </div>

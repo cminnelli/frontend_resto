@@ -1,0 +1,16 @@
+@import '../../../styles.scss';
+
+.brume-quantity{
+
+  margin:0px !important;
+  color:black;
+  border-radius:5px;
+  border:1px solid $color-body;
+  .can{
+    font-weight: 500;
+    font-size: 1.20em;
+  }
+  .inc , .dec{
+    cursor:pointer;
+  }
+}

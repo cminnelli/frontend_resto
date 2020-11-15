@@ -1,0 +1,56 @@
+<div class="selectmenu m-0 p-4 brumeShadow" >
+
+  <!-- <p class="text-center"><i class="fas fa-concierge-bell bellIcon"></i></p> -->
+  <p class="precio bigPrecio font-weight-bold text-center">${{total}}</p>
+  <h5 class="text-center font-text-bold">{{item.nombre}}</h5>
+
+  <p class="descripcion text-center">Aca va a ir la descripcion del producto, un poco mas extensa claro blabla</p>
+
+  <brume-quantity class="brumeQuantity"  (cantidadOut)="getCantidad($event)"></brume-quantity>
+
+    <form class="container">
+
+      <div class="row">
+
+      <div class="variedad  col col-12 col-md-12"  *ngIf="bvariedad" >
+        <p class="text-left font-weight-bold">Variedad</p>
+        <div class="form-group form-control-lg">
+          <select class="form-control" >
+            <option *ngFor="let v of variedad">{{v}}</option>
+          </select>
+        </div>
+    </div>
+
+    <div class="ingredientes col col-12 col-md-12 mb-1" *ngIf="bingredientes">
+        <p class="text-left mb-1 font-weight-bold">Ingredientes</p>
+          <div class="row">
+          <div class="col-6" *ngFor="let i of ingredientes" >
+              <input checked="true" [disabled]="!ingredientesElegibles" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{i}}">
+              <label class="form-check-label" for="inlineCheckbox1">{{i}}</label>
+
+          </div>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="btngroup p-0 m-0 text-center">
+         <button class="btn-bfull btn-brume5" (click)="agregar()">AGREGAR</button>
+        <button class="btn-bfull btn-brume6 mt-2" (click)="descartarItem()">DESCARTAR</button>
+    </div>
+
+
+
+
+
+
+    </div>
+  </form>
+
+</div>
+
+
+
+

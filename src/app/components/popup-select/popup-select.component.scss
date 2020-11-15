@@ -1,0 +1,51 @@
+@import '../../../../src/styles.scss';
+
+select::-ms-expand {
+  width:12px;
+  border:none;
+  background:#fff;
+}
+
+select::-ms-expand {
+  width:12px;
+  border:none;
+  background:#fff;
+}
+
+.selectmenu{
+  height:500px !important;
+  background-color: white;
+  border-radius:10px;
+  transition:3s;
+
+  .variedad{
+    height: 90px;
+  }
+
+  .ingredientes{
+    height: 105px;
+    overflow-y:scroll;
+  }
+
+  .btngroup{
+    width:100%;
+  }
+
+  .bellIcon{
+    font-size:40px;
+    color:$color-cool;
+  }
+
+  .brumeQuantity{
+    width:90% !important;
+    margin:0 auto !important;
+  }
+
+}
+
+
+// BOOTSTRAP
+.input-group .form-control{
+  z-index:none !important;
+}
+

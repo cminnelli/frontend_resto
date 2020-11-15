@@ -1,4 +1,20 @@
 
+//ANIMACIONES
+
+
+  .pedido{
+
+    background-color:lighten(rgb(88,96,229),3%) !important;
+    height: 400% !important;
+    z-index:999 !important;
+
+  }
+
+  .logoAnim{
+    top:20% !important;
+    transform: translate(-50%, -50%) rotateX(360deg) !important;
+  }
+
 
 
 
@@ -15,6 +31,7 @@
         z-index: 999;
         top:13%;
         left:50%;
+        transition:2s;
         transform: translate(-50%, -50%);
         .logo{
             height: 110px;
@@ -24,12 +41,14 @@
     .circulo{
         top:-7%;
         left:50%;
+        transition:2s;
         transform: translate(-50%, -50%);
         position: absolute;
         height: 300px;
         width: 500px;
         border-radius: 50%;
         background-color: rgb(88,96,229);
+        overflow:hidden;
         z-index: 0;
 
     }
@@ -68,7 +87,7 @@
         position: fixed;
         bottom:0px;
         left:0px;
-        z-index:999;
+        z-index:9999 !important;
 
 
 

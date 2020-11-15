@@ -12,6 +12,12 @@ import {GeolocalizacionService} from '../../services/geolocalizacion.service'
 export class RestomenuComponent implements OnInit {
 
   constructor(private router:Router , private aRoute: ActivatedRoute , private geo:GeolocalizacionService, private restaurant:RestaurantsService) { }
+ //POPUPSELECT
+  public bpopupselect:boolean = false;
+
+  //ITEM MENU
+  public itemMenu:any = {};
+
   public pathresto:string;
   public bqrcode:boolean = false;
   public bmainmenu: boolean = true;
@@ -29,7 +35,7 @@ export class RestomenuComponent implements OnInit {
   public distanciaLocal:string = "" ;
   public distanciaUmbral:number = 0;
 
-  public bdistanciaUmbral:boolean = false; // el local permite ver el local a distancia?
+  public bdistanciaUmbral:boolean = true; // el local permite ver el local a distancia?
 
   public bubicacion:boolean = false;
 
@@ -40,6 +46,12 @@ export class RestomenuComponent implements OnInit {
   public categorias:Array<string> = [];
   public restaurantMenu:Array<any> = [];
   public restaurantMenuClasify:Array<any> = [];
+
+//ANIMACIONES
+
+  public circle:Boolean = true;
+  public ped:Boolean = false;
+  public logoAnim:Boolean = false;
 
 
 
@@ -94,6 +106,10 @@ export class RestomenuComponent implements OnInit {
     console.log("generando categorias");
     this.restaurantMenuClasify = this.categoriasCreator(this.restaurantMenu , "Categoria1")
     console.log(this.restaurantMenuClasify)
+
+    //DATOS DUMMY
+    this.itemMenu = await this.restaurantMenuClasify["Comida"][0];
+    this.bpopupselect = true;
   }
 
 
@@ -119,8 +135,19 @@ export class RestomenuComponent implements OnInit {
 
   abrirItem(item){
     console.log(item);
+    this.itemMenu = item;
+    this.bpopupselect = true;
   }
 
+  revisarpedido(){
+
+      this.ped = true;
+      this.logoAnim = true;
+  }
+
+  descartarPopUp(ev){
+    this.bpopupselect = ev;
+  }
   crearqr(){
     this.nped +=1;
 
