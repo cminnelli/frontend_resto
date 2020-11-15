@@ -15,8 +15,9 @@
       <div class="variedad  col col-12 col-md-12"  *ngIf="bvariedad" >
         <p class="text-left font-weight-bold">Variedad</p>
         <div class="form-group form-control-lg">
-          <select class="form-control" >
-            <option *ngFor="let v of variedad">{{v}}</option>
+
+          <select [value]="variedad[1]" class="form-control" [(ngModel)]="varianteSeleccionado" name="varianteSeleccionado" >
+            <option  *ngFor="let v of variedad ; let inx = index"  >{{v}}</option>
           </select>
         </div>
     </div>

@@ -9,6 +9,7 @@ export class PopupSelectComponent implements OnInit {
   @Input() item:any;
   public variedad:Array<string> = []
   public bvariedad:boolean = false;
+  public varianteSeleccionado:string = "";
 
   public ingredientes:Array<string> = []
   public bingredientes:boolean = false;
@@ -22,11 +23,12 @@ export class PopupSelectComponent implements OnInit {
     cantidad:0,
     precio:0,
     total:0,
-    variante:[],
+    variante:"",
     ingredientes:[]
   }
 
   @Output() descartar =  new EventEmitter<Boolean>();
+  @Output() agregarItem =  new EventEmitter<any>();
 
   constructor() { }
 
@@ -34,8 +36,18 @@ export class PopupSelectComponent implements OnInit {
     this.variedades(this.item.Variedad)
     this.ingrediente(this.item.Adherezos);
     this.total = this.item.Precio;
+    this.cabeceraItemCompra(this.item)
+
 
   }
+
+  cabeceraItemCompra(item){
+    this.itemCompra["nombre"] = item.nombre;
+    this.itemCompra["precio"] = item.Precio;
+
+  }
+
+
 
   variedades(arrayVariedad){
     this.variedad = arrayVariedad.split(",");
@@ -62,8 +74,12 @@ export class PopupSelectComponent implements OnInit {
   }
 
   agregar(){
-    console.log("agregando item")
-  }
+    this.itemCompra["cantidad"] = this.cantidad;
+    this.itemCompra["total"] = this.total;
+    this.itemCompra["variante"] = this.varianteSeleccionado;
+    this.agregarItem.emit(this.itemCompra)
+    this.descartar.emit(false);
+   }
 
   getCantidad(can:number){
     this.cantidad = can;

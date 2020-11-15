@@ -23,6 +23,9 @@ export class RestomenuComponent implements OnInit {
   public bmainmenu: boolean = true;
 
   public pedido:any;
+  public pedidoCerrado:Array<any> = [];
+  public npedidoCerrado:number = 0;
+0
   public nped:number=0;
 
   //UBICACION
@@ -154,6 +157,15 @@ export class RestomenuComponent implements OnInit {
     this.pedido = JSON.stringify(this.restaurantMenu [this.nped]);
     this.bmainmenu = false;
     this.bqrcode = true;
+  }
+
+  importandoItem(event){
+    this.pedidoCerrado.push(event);
+    this.npedidoCerrado = this.pedidoCerrado.length;
+    console.log(this.pedidoCerrado);
+    console.log(this.npedidoCerrado);
+    console.log("importando item desde popup");
+    console.log(event);
   }
 
   distanceFrom(lat1 , lon1 , lat2 , lon2) {

@@ -1,5 +1,5 @@
 
-<popup-select class="centerPos" [item]="itemMenu" *ngIf="bpopupselect" (descartar)="descartarPopUp($event)"></popup-select>
+<popup-select (agregarItem)="importandoItem($event)" class="centerPos" [item]="itemMenu" *ngIf="bpopupselect" (descartar)="descartarPopUp($event)"></popup-select>
 
 <div class="container restoprincipal">
   <nav>
