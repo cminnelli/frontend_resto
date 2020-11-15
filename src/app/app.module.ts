@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 import {MatTabsModule} from '@angular/material/tabs';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PopupSelectComponent } from './components/popup-select/popup-select.component';
 import { BrumeQuantityComponent } from './components/brume-quantity/brume-quantity.component';
